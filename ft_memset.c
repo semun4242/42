@@ -5,24 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 15:33:16 by semun             #+#    #+#             */
-/*   Updated: 2022/07/07 16:11:49 by semun            ###   ########.fr       */
+/*   Created: 2022/07/08 15:28:46 by semun             #+#    #+#             */
+/*   Updated: 2022/07/08 15:33:19 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char	*d;
-	unsigned char	s;
-	unsigned int	i;
+	unsigned char	*dest;
+	size_t			i;
 
-	d = b;
+	dest = b;
 	i = 0;
-	s = c;
-	while (len > i++)
+	while (len > i)
 	{
-		*d++ = s;
+		dest[i] = c;
+		i++;
 	}
 	return (b);
 }

@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 16:21:40 by semun             #+#    #+#             */
-/*   Updated: 2022/07/08 15:27:39 by semun            ###   ########.fr       */
+/*   Created: 2022/06/02 16:11:12 by semun             #+#    #+#             */
+/*   Updated: 2022/07/08 19:47:39 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	unsigned int	i;
+	char	*dest;
+	int		s1_len;
+	int		s2_len;
 
-	i = 0;
-	d = dst;
-	s = (unsigned char *)src;
-	if (!d[i] && !s[i])
+	s1_len = ft_strlen((char *)s1);
+	s2_len = ft_strlen((char *)s2);
+	if (!s1 && !s2)
 		return (0);
-	while (i < n)
+	dest = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	s1_len = 0;
+	while (s1[s1_len])
 	{
-		d[i] = s[i];
-		i++;
+		dest[s1_len] = s1[s1_len];
+		s1_len++;
 	}
-	return (dst);
+	s2_len = 0;
+	while (s2[s2_len])
+	{
+		dest[s1_len] = s2[s2_len++];
+		s1_len++;
+	}
+	dest[s1_len] = '\0';
+	return (dest);
 }
