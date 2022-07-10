@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:38:02 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 16:55:12 by semun            ###   ########.fr       */
+/*   Created: 2022/07/10 17:35:55 by semun             #+#    #+#             */
+/*   Updated: 2022/07/10 19:26:37 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t			i;
-	unsigned char	*src1;
-	unsigned char	*src2;
-
-	src1 = (unsigned char *)s1;
-	src2 = (unsigned char *)s2;
+	char	*str;
+	size_t	i;
+	int		len;
+	
+	len = ft_strlen((char *)s);
 	i = 0;
-	while ((src1[i] || src2[i]) && i < n)
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (s[i])
 	{
-		if (src1[i] != src2[i])
-			return ((unsigned char)src1[i] - (unsigned char)src2[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	return (0);
+	str[i] = '\0';
+	return (str);
 }

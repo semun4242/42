@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:38:02 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 16:55:12 by semun            ###   ########.fr       */
+/*   Created: 2022/07/10 18:57:59 by semun             #+#    #+#             */
+/*   Updated: 2022/07/10 19:23:42 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t			i;
-	unsigned char	*src1;
-	unsigned char	*src2;
+	size_t	i;
 
-	src1 = (unsigned char *)s1;
-	src2 = (unsigned char *)s2;
 	i = 0;
-	while ((src1[i] || src2[i]) && i < n)
+	while (s[i])
 	{
-		if (src1[i] != src2[i])
-			return ((unsigned char)src1[i] - (unsigned char)src2[i]);
+		f(i, &s[i]);
 		i++;
 	}
-	return (0);
 }

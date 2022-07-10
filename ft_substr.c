@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:53:31 by semun             #+#    #+#             */
-/*   Updated: 2022/07/08 19:48:01 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/10 19:14:17 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (s_len < start)
 		len = 0;
 	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (0);
 	i = start;
 	dest_len = 0;
 	while (s[i] && dest_len < len)

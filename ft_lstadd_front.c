@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:38:02 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 16:55:12 by semun            ###   ########.fr       */
+/*   Created: 2022/07/10 19:29:31 by semun             #+#    #+#             */
+/*   Updated: 2022/07/10 19:38:02 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t			i;
-	unsigned char	*src1;
-	unsigned char	*src2;
-
-	src1 = (unsigned char *)s1;
-	src2 = (unsigned char *)s2;
-	i = 0;
-	while ((src1[i] || src2[i]) && i < n)
-	{
-		if (src1[i] != src2[i])
-			return ((unsigned char)src1[i] - (unsigned char)src2[i]);
-		i++;
-	}
-	return (0);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

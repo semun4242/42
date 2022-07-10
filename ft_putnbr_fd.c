@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:38:02 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 16:55:12 by semun            ###   ########.fr       */
+/*   Created: 2022/07/10 19:08:39 by semun             #+#    #+#             */
+/*   Updated: 2022/07/10 19:11:09 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	int_to_string(int a, int fd)
 {
-	size_t			i;
-	unsigned char	*src1;
-	unsigned char	*src2;
+	char	c;
+	int		tmp;
 
-	src1 = (unsigned char *)s1;
-	src2 = (unsigned char *)s2;
-	i = 0;
-	while ((src1[i] || src2[i]) && i < n)
+	if (a == 0)
+		return ;
+	tmp = a;
+	c = tmp % 10 + 48;
+	int_to_string(tmp / 10, fd);
+	write(fd, &c, 1);
+}
+
+void	ft_putnbr_fd(int nb, int fd)
+{
+	if (nb == -2147483648)
 	{
-		if (src1[i] != src2[i])
-			return ((unsigned char)src1[i] - (unsigned char)src2[i]);
-		i++;
+		write(fd, "-2147483648", 11);
 	}
-	return (0);
+	else if (nb == 0)
+		write(fd, "0", 1);
+	else if (nb < 0)
+	{
+		write(fd, "-", 1);
+		int_to_string(-nb, fd);
+	}
+	else
+		int_to_string(nb, fd);
 }
