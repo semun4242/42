@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:16:18 by semun             #+#    #+#             */
-/*   Updated: 2022/07/08 15:33:59 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 17:47:13 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*d;
-	unsigned int	i;
-
-	i = 0;
-	d = s;
-	while (n > i)
-	{
-		d[i++] = 0;
-	}
+	ft_memset(s, 0, n);
 }

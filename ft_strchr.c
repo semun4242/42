@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:39:25 by semun             #+#    #+#             */
-/*   Updated: 2022/07/08 16:00:04 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 15:02:57 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 
 	src = (char *)s;
 	i = 0;
-	while (src[i] != c)
+	while (src[i] != (char)c)
 	{
 		if (src[i] == '\0')
 			return (0);

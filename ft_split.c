@@ -6,40 +6,43 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:14:46 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 16:50:22 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 20:03:21 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_charset(char splitc, char c)
+static void	ft_malloc_error(char **ptr)
 {
-	if (splitc == c)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+		free(ptr[i]);
 }
 
-int	split_size(char *str, char c)
+static int	split_size(char *str, char c)
 {
 	int	i;
 	int	size;
 
 	i = 0;
 	size = 0;
-	while (*str)
+	while (str[i])
 	{
-		if (!is_charset(*str, c))
+		if (str[i] != c)
 		{
 			size++;
-			while (*str && !is_charset(*str, c))
-				str++;
+			while (str[i] && str[i] != c)
+				i++;
 		}
-		str++;
+		else
+			i++;
 	}
 	return (size);
 }
 
-char	*ac_str(char *src, char c, int nb)
+static char	*ac_str(char *src, char c, int nb)
 {
 	int		len;
 	char	*str;
@@ -48,7 +51,7 @@ char	*ac_str(char *src, char c, int nb)
 	len = 0;
 	str = 0;
 	i = nb;
-	while (src[i] && !is_charset(src[i], c))
+	while (src[i] && src[i] != c)
 		i++;
 	str = (char *)malloc(sizeof(char) * (i - nb + 1));
 	len = 0;
@@ -71,18 +74,21 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (NULL);
 	len = split_size((char *)s, c);
 	ptr = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!ptr)
-		return (0);
+		return (NULL);
 	while (i < len)
 	{
-		while (s[j] && is_charset(s[j], c))
+		while (s[j] && s[j] == c)
 			j++;
-		ptr[i] = ac_str((char *)s, c, j);
-		while (s[j] && !is_charset(s[j], c))
+		ptr[i++] = ac_str((char *)s, c, j);
+		if (!ptr)
+			ft_malloc_error(ptr);
+		while (s[j] && s[j] != c)
 			j++;
-		i++;
 	}
 	ptr[i] = 0;
 	return (ptr);

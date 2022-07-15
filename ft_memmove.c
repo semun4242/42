@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:38:20 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 20:30:00 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 15:48:58 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,22 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	if (!dst && !src)
 		return (NULL);
-	i = 0;
+	i = -1;
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
-	while (i < len)
+	if (d <= s)
 	{
-		d[i] = s[i];
-		i++;
+		while (++i < len)
+			d[i] = s[i];
+	}
+	else
+	{
+		i += len + 1;
+		while (len--)
+		{
+			--i;
+			d[i] = s[i];
+		}
 	}
 	return (dst);
 }

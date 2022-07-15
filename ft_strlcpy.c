@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 14:33:34 by semun             #+#    #+#             */
-/*   Updated: 2022/07/07 16:42:53 by semun            ###   ########.fr       */
+/*   Created: 2022/07/10 14:33:34 by semun             #+#    #+#             */
+/*   Updated: 2022/07/15 17:52:41 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	len;
 
 	i = 0;
-	len = 0;
-	while (src[len])
-		len++;
+	len = ft_strlen((char *)src);
 	while (src[i] && i + 1 < dstsize)
 	{
 		dst[i] = src[i];

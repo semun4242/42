@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/28 12:02:17 by semun             #+#    #+#             */
-/*   Updated: 2022/07/07 16:44:27 by semun            ###   ########.fr       */
+/*   Created: 2022/07/10 12:02:17 by semun             #+#    #+#             */
+/*   Updated: 2022/07/15 17:52:48 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dest_len;
 	size_t	cat_len;
 
-	src_len = 0;
+	src_len = ft_strlen((char *)src);
 	dest_len = 0;
 	cat_len = 0;
-	while (src[src_len])
-		src_len++;
 	while (dst[dest_len] && dest_len < size)
 		dest_len++;
 	while (src[cat_len] && (dest_len + cat_len + 1) < size)

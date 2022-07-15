@@ -6,15 +6,15 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:15:53 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 20:39:04 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 17:49:57 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long	interger_len(long long n)
+static int	interger_len(int n)
 {
-	long long	len;
+	int	len;
 
 	len = 0;
 	if (n == 0)
@@ -26,7 +26,7 @@ long long	interger_len(long long n)
 	}
 	while (n != 0)
 	{
-		n /= 10;
+		n = n / 10;
 		len++;
 	}
 	return (len);
@@ -34,25 +34,27 @@ long long	interger_len(long long n)
 
 char	*ft_itoa(int n)
 {
-	char	*dest;
-	int		len;
-	int		i;
+	char			*dest;
+	int				len;
+	unsigned int	tmp;
 
-	i = 0;
 	len = interger_len(n);
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dest)
 		return (0);
 	if (n < 0)
 	{
-		dest[i++] = '-';
+		dest[0] = '-';
 		n *= -1;
 	}
+	else if (n == 0)
+		dest[0] = '0';
+	tmp = (unsigned int)n;
 	dest[len] = '\0';
-	while (n != 0)
+	while (tmp != 0)
 	{
-		dest[--len] = (n % 10) + '0';
-		n = n / 10;
+		dest[--len] = (tmp % 10) + '0';
+		tmp = tmp / 10;
 	}
 	return (dest);
 }

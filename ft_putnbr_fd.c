@@ -6,13 +6,13 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:08:39 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 19:11:09 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 17:51:34 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	int_to_string(int a, int fd)
+static void	int_to_string(int a, int fd)
 {
 	char	c;
 	int		tmp;
