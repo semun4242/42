@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:57:59 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 19:23:42 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/15 20:21:26 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return ;
 	while (s[i])
 	{
 		f(i, &s[i]);

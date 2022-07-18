@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:44:49 by semun             #+#    #+#             */
-/*   Updated: 2022/07/10 20:22:24 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/18 15:24:43 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*ltlit;
+	t_list	*clst;
 
 	if (!lst || !new)
 		return ;
@@ -23,6 +23,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	ltlit = ft_lstlast(*lst);
-	ltlit->next = new;
+	clst = ft_lstlast(*lst);
+	clst->next = new;
 }

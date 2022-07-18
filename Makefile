@@ -1,7 +1,7 @@
 CC = gcc
 CFLAG = -Wall -Wextra -Werror -c
 
-TARGET = libft.a
+NAME = libft.a
 
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
 		ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_strncmp.c ft_toupper.c \
@@ -16,20 +16,21 @@ OBJ = $(SRC:.c=.o)
 
 OBJ_B = $(BONUS:.c=.o)
 
-all: $(TARGET)
+all: $(NAME)
 
-bonus: $(TARGET)
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
-%.o : %.c
+bonus: $(OBJ) $(OBJ_B)
+	ar rcs $(NAME) $(OBJ) $(OBJ_B)
+
+%.o: %.c
 	$(CC) $(CFLAG) $< -o $@ -I /
 
-$(TARGET) : $(OBJ) $(OBJ_B)
-	ar cr $(TARGET) $(OBJ) $(OBJ_B)
-
 clean:
-	rm -f $(OBJ) $(OBJ_B)
+	rm -rf $(OBJ) $(OBJ_B)
 
 fclean: clean
-	rm -f $(TARGET)
+	rm -rf $(NAME)
 
 re: fclean all
