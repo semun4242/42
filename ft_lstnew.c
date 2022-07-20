@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:15:17 by semun             #+#    #+#             */
-/*   Updated: 2022/07/15 17:50:16 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/20 14:40:09 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*clist;
+	t_list	*clst;
 
-	clist = (t_list *)malloc(sizeof(t_list));
-	if (!clist)
+	clst = (t_list *)malloc(sizeof(t_list));
+	if (!clst)
 		return (NULL);
-	clist->content = content;
-	clist->next = NULL;
-	return (clist);
+	clst->content = content;
+	clst->next = NULL;
+	return (clst);
 }

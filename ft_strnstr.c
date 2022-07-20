@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:47:06 by semun             #+#    #+#             */
-/*   Updated: 2022/07/08 18:27:39 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/20 14:37:28 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
 	unsigned int	str_len;
 	unsigned int	to_find_len;
-	unsigned int	len;
 
-	len = ft_strlen((char *)haystack);
 	str_len = 0;
 	if (!needle[0])
 		return ((char *)haystack);

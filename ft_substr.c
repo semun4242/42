@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:53:31 by semun             #+#    #+#             */
-/*   Updated: 2022/07/15 19:55:43 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/18 18:23:32 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dest)
-		return (0);
+		return (NULL);
 	ft_strlcpy(dest, s + start, len + 1);
 	return (dest);
 }

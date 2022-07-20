@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:11:12 by semun             #+#    #+#             */
-/*   Updated: 2022/07/15 20:16:39 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/18 18:37:33 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	dest = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!dest)
 		return (NULL);
-	ft_strlcpy(dest, (char *)s1, s1_len + 1);
-	ft_strlcpy(dest + s1_len, (char *)s2, s2_len + 1);
+	if (s1)
+		ft_strlcpy(dest, (char *)s1, s1_len + 1);
+	if (s2)
+		ft_strlcpy(dest + s1_len, (char *)s2, s2_len + 1);
 	return (dest);
 }
