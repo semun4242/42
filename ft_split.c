@@ -12,13 +12,15 @@
 
 #include "libft.h"
 
-static void	ft_malloc_error(char **ptr)
+static char	**ft_malloc_error(char **ptr)
 {
 	int	i;
 
 	i = 0;
 	while (ptr[i])
-		free(ptr[i]);
+		free(ptr[i++]);
+	free(ptr);
+	return (0);
 }
 
 static int	split_size(char *str, char c)
@@ -49,11 +51,12 @@ static char	*ac_str(char *src, char c, int nb)
 	int		i;
 
 	len = 0;
-	str = 0;
 	i = nb;
 	while (src[i] && src[i] != c)
 		i++;
 	str = (char *)malloc(sizeof(char) * (i - nb + 1));
+	if (!str)
+		return (0);
 	len = 0;
 	while (src[nb] && nb < i)
 	{
@@ -84,9 +87,9 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[j] && s[j] == c)
 			j++;
-		ptr[i++] = ac_str((char *)s, c, j);
-		if (!ptr)
-			ft_malloc_error(ptr);
+		ptr[i] = ac_str((char *)s, c, j);
+		if (!ptr[i++])
+			return (ft_malloc_error(ptr));
 		while (s[j] && s[j] != c)
 			j++;
 	}
