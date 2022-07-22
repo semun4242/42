@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 14:33:34 by semun             #+#    #+#             */
-/*   Updated: 2022/07/20 18:25:43 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/22 15:45:20 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	len;
 
-	i = 0;
 	len = ft_strlen((char *)src);
+	i = 0;
 	while (src[i] && i + 1 < dstsize)
 	{
 		dst[i] = src[i];

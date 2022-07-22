@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:35:50 by semun             #+#    #+#             */
-/*   Updated: 2022/07/20 18:25:20 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/22 19:02:09 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
+		if (num > 2147483647 && sign == 1)
+			return (-1);
+		else if (num < -2147483648 && sign == -1)
+			return (0);
 		num *= 10;
 		num += str[i++] - '0';
 	}

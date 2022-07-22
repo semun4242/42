@@ -6,7 +6,7 @@
 /*   By: semun <semun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:00:25 by semun             #+#    #+#             */
-/*   Updated: 2022/07/20 18:42:16 by semun            ###   ########.fr       */
+/*   Updated: 2022/07/22 16:54:19 by semun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*nlst;
 	t_list	*clst;
 
-	clst = 0;
+	clst = NULL;
 	while (lst)
 	{
 		nlst = ft_lstnew(f(lst->content));
@@ -29,5 +29,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		ft_lstadd_back(&clst, nlst);
 		lst = lst->next;
 	}
+	nlst = NULL;
 	return (clst);
 }

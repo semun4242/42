@@ -16,16 +16,22 @@ OBJ = $(SRC:.c=.o)
 
 OBJ_B = $(BONUS:.c=.o)
 
+ifdef WITH_BONUS
+	OBJ_F = $(OBJ) $(OBJ_B)
+else
+	OBJ_F = $(OBJ)
+endif
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
-bonus: $(OBJ) $(OBJ_B)
-	ar rcs $(NAME) $(OBJ) $(OBJ_B)
+bonus:
+	@make WITH_BONUS=1 all
 
 %.o: %.c
 	$(CC) $(CFLAG) $< -o $@ -I /
+
+$(NAME): $(OBJ_F)
+	ar rcs $(NAME) $(OBJ_F)
 
 clean:
 	rm -rf $(OBJ) $(OBJ_B)
@@ -33,4 +39,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: fclean all
+re:
+	make fclean
+	make all
+
+.PHONY: all clean fclean re
