@@ -29,6 +29,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		ft_lstadd_back(&clst, nlst);
 		lst = lst->next;
 	}
+<<<<<<< HEAD
 	nlst = NULL;
+=======
+	nlst = 0;
+>>>>>>> a89bd7d975835165e51f0e622ad7a44a5d4e242a
 	return (clst);
 }
